@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { MdEmail } from 'react-icons/md';
 import { FaBloggerB, FaGithub, FaLinkedin } from 'react-icons/fa';
@@ -25,14 +25,44 @@ const Icon = styled.a`
     font-size: 20px; 
     text-decoration: none;
     color: black;
-`
+`;
+
+const LanguageButton = styled.button`
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+`;
+
+const content = {
+    chinese: {
+        language: 'English',
+        name: '周虹伋',
+        position: '全栈开发工程师',
+        location: '澳大利亚，墨尔本',
+    },
+    english: {
+        language: '中文',
+        name: 'ACER ZHOU',
+        position: 'Full Stack Software Engineer',
+        location: 'Melbourne, Australia',
+    },
+}
 
 export default function HomePage() {
+    const [language, setLanguage] = useState<'english' | 'chinese'>('english');
+    function handleLanguageButtonClick() {
+        if (language === 'english') {
+            setLanguage('chinese')
+        } else {
+            setLanguage('english')
+        }
+    }
     return (<Wrapper>
+
         <ContentWrapper>
-            <h1>ACER ZHOU</h1>
-            <h3>Full Stack Software Engineer</h3>
-            <h3>Melbourne, Australia</h3>
+            <h1>{content[language].name}</h1>
+            <h3>{content[language].position}</h3>
+            <h3>{content[language].location}</h3>
             <IconWrapper>
                 <Icon href="https://github.com/AcerZhou/"><FaGithub /></Icon>
                 <Icon href="https://www.linkedin.com/in/acer-zhou/"><FaLinkedin /></Icon>
@@ -41,6 +71,7 @@ export default function HomePage() {
             </IconWrapper>
 
         </ContentWrapper>
+        <LanguageButton onClick={handleLanguageButtonClick}>{content[language].language}</LanguageButton>
 
     </Wrapper>)
 }
