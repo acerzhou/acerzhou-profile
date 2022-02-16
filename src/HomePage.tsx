@@ -4,15 +4,14 @@ import { MdEmail } from 'react-icons/md';
 import { FaBloggerB, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Wrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-rows: 1fr 1fr 3fr;
     height: 100vh;
     width: 100%;
 `;
 
 const ContentWrapper = styled.div`
-    margin: -20%;
+    grid-row: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
