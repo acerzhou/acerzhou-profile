@@ -31,17 +31,21 @@ const LanguageButton = styled.button`
     position: absolute;
     bottom: 10px;
     right: 15px;
+    height: 30px;
+    width: 30px;
+    border: none;
+    background: white;
 `;
 
 const content = {
     chinese: {
-        language: 'English',
+        language: 'EN',
         name: '周虹伋',
         position: '全栈开发工程师',
         location: '澳大利亚，墨尔本',
     },
     english: {
-        language: '中文',
+        language: '中',
         name: 'ACER ZHOU',
         position: 'Full Stack Software Engineer',
         location: 'Melbourne, Australia',
@@ -64,10 +68,10 @@ export default function HomePage() {
             <h3>{content[language].position}</h3>
             <h3>{content[language].location}</h3>
             <IconWrapper>
-                <Icon href="https://github.com/AcerZhou/"><FaGithub /></Icon>
-                <Icon href="https://www.linkedin.com/in/acer-zhou/"><FaLinkedin /></Icon>
-                <Icon href="https://acerzhou.github.io/Blog"><FaBloggerB /></Icon>
-                <Icon href="mailto:acerzhou.work@gmail.com"><MdEmail /></Icon>
+                <Icon href="https://github.com/AcerZhou/" target="_blank"><FaGithub /></Icon>
+                <Icon href="https://www.linkedin.com/in/acer-zhou/" target="_blank"><FaLinkedin /></Icon>
+                <Icon href="https://acerzhou.github.io/Blog" target="_blank"><FaBloggerB /></Icon>
+                <Icon href="mailto:acerzhou.work@gmail.com" target="_blank"><MdEmail /></Icon>
             </IconWrapper>
 
         </ContentWrapper>
