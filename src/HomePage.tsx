@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { MdEmail } from 'react-icons/md';
 import { FaBloggerB, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { Page } from './App';
 
 const Wrapper = styled.div`
     display: grid;
@@ -52,7 +53,11 @@ const content = {
     },
 }
 
-export default function HomePage() {
+interface Props {
+    setPage: (page: Page) => void;
+}
+
+export default function HomePage({ setPage }: Props) {
     const [language, setLanguage] = useState<'english' | 'chinese'>('english');
     function handleLanguageButtonClick() {
         if (language === 'english') {
@@ -65,7 +70,7 @@ export default function HomePage() {
 
         <ContentWrapper>
             <h1>{content[language].name}</h1>
-            <h3>{content[language].position}</h3>
+            <h3 onClick={() => setPage('professional')}>{content[language].position}</h3>
             <h3>{content[language].location}</h3>
             <IconWrapper>
                 <Icon href="https://github.com/AcerZhou/" target="_blank"><FaGithub /></Icon>
