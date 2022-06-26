@@ -7,9 +7,9 @@ export type Page = 'home' | 'professional';
 function App() {
 
   const [page, setPage] = useState<Page>('home');
-  // if (page === 'professional') {
-  //   return <ProfessionalPage setPage={setPage} />
-  // }
+  if (page === 'professional') {
+    return <ProfessionalPage setPage={setPage} />
+  }
   return <HomePage setPage={setPage} />;
 }
 

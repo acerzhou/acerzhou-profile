@@ -6,7 +6,7 @@ import { Page } from './App';
 
 const Wrapper = styled.div`
     display: grid;
-    grid-template-rows: 1fr 1fr 3fr;
+    grid-template-rows: 2fr 1fr 3fr;
     height: 100vh;
     width: 100%;
 `;
@@ -36,6 +36,13 @@ const LanguageButton = styled.button`
     width: 30px;
     border: none;
     background: white;
+`;
+
+const Position = styled.h3`
+    &:hover  {
+        color: orange;
+        cursor: pointer;
+    }
 `;
 
 const content = {
@@ -70,7 +77,7 @@ export default function HomePage({ setPage }: Props) {
 
         <ContentWrapper>
             <h1>{content[language].name}</h1>
-            <h3 onClick={() => setPage('professional')}>{content[language].position}</h3>
+            <Position onClick={() => setPage('professional')}>{content[language].position}</Position>
             <h3>{content[language].location}</h3>
             <IconWrapper>
                 <Icon href="https://github.com/AcerZhou/" target="_blank"><FaGithub /></Icon>
