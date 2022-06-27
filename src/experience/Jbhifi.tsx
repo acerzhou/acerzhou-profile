@@ -1,19 +1,6 @@
 import { VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import styled from 'styled-components';
-
-const IconImage = styled.img`
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
-`;
-
-const Icon = () => {
-    return <a href='https://jbhifi.com.au' target='_blank' rel="noreferrer">
-        <IconImage src="professional-pages/jbhifi.png" alt='icon' />
-    </a>
-}
-
+import Icon from '../common/Icon';
 
 export default function Jbhifi() {
     const education =
@@ -23,6 +10,8 @@ export default function Jbhifi() {
         title2: 'Software Developer',
         organisation: 'JB HiFi',
         location: 'Melbourne, Australia',
+        link: 'https://jbhifi.com.au',
+        iconUrl: 'professional-pages/jbhifi.png',
     };
 
     return (
@@ -32,7 +21,7 @@ export default function Jbhifi() {
             contentArrowStyle={{ borderRight: '7px solid  #FEEB10' }}
             date={education.date}
             iconStyle={{ background: '#FEEB10', color: 'black' }}
-            icon={<Icon />}
+            icon={<Icon iconUrl={education.iconUrl} link={education.link} />}
         >
             <h3 className="vertical-timeline-element-title">{education.title}</h3>
             <h3 className="vertical-timeline-element-title">{education.title2}</h3>

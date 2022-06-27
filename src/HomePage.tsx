@@ -28,7 +28,11 @@ const Icon = styled.a`
     color: black;
 `;
 
-const LanguageButton = styled.button`
+interface ILanguageButton {
+    isButtonChinese: boolean
+}
+
+const LanguageButton = styled.button<ILanguageButton>`
     position: absolute;
     bottom: 10px;
     right: 15px;
@@ -36,6 +40,8 @@ const LanguageButton = styled.button`
     width: 30px;
     border: none;
     background: white;
+    border: 1px solid black;
+    border-radius: ${(props) => props.isButtonChinese ? '0' : '50%'};
 `;
 
 const Position = styled.h3`
@@ -45,10 +51,18 @@ const Position = styled.h3`
     }
 `;
 
+const LocationLink = styled.a`
+    color: black;
+    text-decoration: none; 
+    &:hover  {
+        color: orange;
+        cursor: pointer;
+    }
+`;
 const content = {
     chinese: {
         language: 'EN',
-        name: '周虹伋',
+        name: '周 虹 伋',
         position: '全栈开发工程师',
         location: '澳大利亚，墨尔本',
     },
@@ -78,7 +92,9 @@ export default function HomePage({ setPage }: Props) {
         <ContentWrapper>
             <h1>{content[language].name}</h1>
             <Position onClick={() => setPage('professional')}>{content[language].position}</Position>
-            <h3>{content[language].location}</h3>
+            <LocationLink href='https://goo.gl/maps/LWY32BP7dxwmWN949' target='_blank' rel="noreferrer">
+                <h3>{content[language].location}</h3>
+            </LocationLink>
             <IconWrapper>
                 <Icon href="https://github.com/AcerZhou/" target="_blank"><FaGithub /></Icon>
                 <Icon href="https://www.linkedin.com/in/acer-zhou/" target="_blank"><FaLinkedin /></Icon>
@@ -87,7 +103,7 @@ export default function HomePage({ setPage }: Props) {
             </IconWrapper>
 
         </ContentWrapper>
-        <LanguageButton onClick={handleLanguageButtonClick}>{content[language].language}</LanguageButton>
+        <LanguageButton isButtonChinese={language === 'chinese'} onClick={handleLanguageButtonClick}>{content[language].language}</LanguageButton>
 
     </Wrapper>)
 }

@@ -1,27 +1,16 @@
 import { VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import styled from 'styled-components';
-
-const IconImage = styled.img`
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
-`;
-
-const Icon = () => {
-    return <a href='https://99designs.com' target='_blank' rel="noreferrer">
-        <IconImage src="professional-pages/99designs.png" alt='icon' />
-    </a>
-}
-
+import Icon from '../common/Icon';
 
 export default function NinetyNineDesigns() {
-    const education =
+    const experience =
     {
         date: '2021 - 2022',
         title: 'Software Developer',
         organisation: '99Designs',
         location: 'Melbourne, Australia',
+        link: 'https://99designs.com',
+        iconUrl: 'professional-pages/99designs.png',
     };
 
     return (
@@ -29,13 +18,13 @@ export default function NinetyNineDesigns() {
             className="vertical-timeline-element--work"
             contentStyle={{ background: '#FF6052', color: '#fff' }}
             contentArrowStyle={{ borderRight: '7px solid #FF6052' }}
-            date={education.date}
+            date={experience.date}
             iconStyle={{ background: '#FF6052', color: 'black' }}
-            icon={<Icon />}
+            icon={<Icon iconUrl={experience.iconUrl} link={experience.link} />}
         >
-            <h3 className="vertical-timeline-element-title">{education.title}</h3>
-            <h4 className="vertical-timeline-element-subtitle">{education.organisation}</h4>
-            <h4 className="vertical-timeline-element-subtitle">{education.location}</h4>
+            <h3 className="vertical-timeline-element-title">{experience.title}</h3>
+            <h4 className="vertical-timeline-element-subtitle">{experience.organisation}</h4>
+            <h4 className="vertical-timeline-element-subtitle">{experience.location}</h4>
         </VerticalTimelineElement>
     )
 }

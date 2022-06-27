@@ -1,17 +1,6 @@
 import { VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import styled from 'styled-components';
-
-const IconImage = styled.img`
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
-`;
-
-const Icon = () => {
-    return <IconImage src="professional-pages/monash.png" alt='icon' />
-}
-
+import Icon from '../common/Icon';
 
 export default function Master() {
     const education =
@@ -21,6 +10,8 @@ export default function Master() {
         title2: 'Master of Business Information System',
         organisation: 'Monash University',
         location: 'Melbourne, Australia',
+        link: 'https://monash.edu',
+        iconUrl: 'professional-pages/monash.png',
     };
 
     return (
@@ -30,7 +21,7 @@ export default function Master() {
             contentArrowStyle={{ borderRight: '7px solid #00599D' }}
             date={education.date}
             iconStyle={{ background: 'white', color: 'black' }}
-            icon={<Icon />}
+            icon={<Icon iconUrl={education.iconUrl} link={education.link} />}
         >
             <h3 className="vertical-timeline-element-title">{education.title}</h3>
             <h3 className="vertical-timeline-element-title">{education.title2}</h3>
