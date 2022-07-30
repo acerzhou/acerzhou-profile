@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { MdEmail } from 'react-icons/md';
 import { FaBloggerB, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Page } from './App';
+import LanguageButton from './common/LanguageButton';
+import { LANGUAGE_ENGLISH } from './common/constants';
 
 const Wrapper = styled.div`
     display: grid;
@@ -26,25 +28,6 @@ const Icon = styled.a`
     font-size: 20px; 
     text-decoration: none;
     color: black;
-`;
-
-interface ILanguageButton {
-    isButtonChinese: boolean
-}
-
-const LanguageButton = styled.button<ILanguageButton>`
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    height: 30px;
-    width: 30px;
-    border: none;
-    background: white;
-    border: 1px solid black;
-    border-radius: ${(props) => props.isButtonChinese ? '0' : '50%'};
-    &:hover  {
-        border: 2px solid orange;
-    }
 `;
 
 const Position = styled.h3`
@@ -90,15 +73,8 @@ interface Props {
 }
 
 export default function HomePage({ setPage }: Props) {
-    const [language, setLanguage] = useState<'english' | 'chinese'>('english');
+    const [language, setLanguage] = useState<'english' | 'chinese'>(LANGUAGE_ENGLISH);
 
-    function handleLanguageButtonClick() {
-        if (language === 'english') {
-            setLanguage('chinese')
-        } else {
-            setLanguage('english')
-        }
-    }
     return (<Wrapper>
 
         <Line />
@@ -116,7 +92,6 @@ export default function HomePage({ setPage }: Props) {
             </IconWrapper>
 
         </ContentWrapper>
-        <LanguageButton isButtonChinese={language === 'chinese'} onClick={handleLanguageButtonClick}>{content[language].language}</LanguageButton>
-
+        <LanguageButton language={language} displayLanguage={content[language].language} setLanguage={setLanguage} />
     </Wrapper>)
 }
