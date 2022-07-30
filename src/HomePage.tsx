@@ -42,6 +42,9 @@ const LanguageButton = styled.button<ILanguageButton>`
     background: white;
     border: 1px solid black;
     border-radius: ${(props) => props.isButtonChinese ? '0' : '50%'};
+    &:hover  {
+        border: 2px solid orange;
+    }
 `;
 
 const Position = styled.h3`
@@ -74,12 +77,21 @@ const content = {
     },
 }
 
+const Line = styled.div`
+    position: absolute;
+    left: 36%;
+    width: 3px;
+    height: 100%;
+    background: orange;
+`;
+
 interface Props {
     setPage: (page: Page) => void;
 }
 
 export default function HomePage({ setPage }: Props) {
     const [language, setLanguage] = useState<'english' | 'chinese'>('english');
+
     function handleLanguageButtonClick() {
         if (language === 'english') {
             setLanguage('chinese')
@@ -89,6 +101,7 @@ export default function HomePage({ setPage }: Props) {
     }
     return (<Wrapper>
 
+        <Line />
         <ContentWrapper>
             <h1>{content[language].name}</h1>
             <Position onClick={() => setPage('professional')}>{content[language].position}</Position>
